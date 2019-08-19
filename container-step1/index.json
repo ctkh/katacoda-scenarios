@@ -1,6 +1,6 @@
 {
   "title": "Container Training Step 1",
-  "description": "",
+  "description": "このシナリオは、はじめてDockerコンテナをさわる人向けです",
   "difficulty": "Beginner",
   "time": "30 minutes",
   "details": {
