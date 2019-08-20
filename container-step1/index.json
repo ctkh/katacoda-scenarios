@@ -1,8 +1,8 @@
 {
-  "title": "Container Training Day 1",
+  "title": "Container Training Step 1",
   "description": "コンテナ勉強会　1回目",
   "difficulty": "Beginner",
-  "time": "30 minutes",
+  "time": "10 minutes",
   "details": {
     "steps": [
       {
@@ -21,14 +21,6 @@
         "title": "Step 4",
         "text": "step4.md"
       },
-      {
-        "title": "Step 5",
-        "text": "step5.md"
-      },
-      {
-        "title": "Step 6",
-        "text": "step6.md"
-      }
     ],
     "intro": {
       "text": "intro.md"
@@ -38,7 +30,7 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "docker"
