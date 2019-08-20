@@ -3,7 +3,7 @@
 新しいイメージを利用して、コンテナを複数起動してみましょう。
 ついでに、バックグラウンドでの起動をおこないます。
 
-`docker run -d –p 8081:80 --name web1 nginx`{{execute}}
+`docker run -d –p 8081:80 --name web1 nginx `{{execute}}
 
 `-d`で、コンテナをバックグラウンド起動。
 
