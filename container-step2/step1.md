@@ -1,6 +1,6 @@
 あらかじめサンプルを用意しました。移動します。
 
-`cd container-lesson/day1/nginx`{{execute}}
+`cd ./container-lesson/day1/nginx`{{execute}}
 
 コンテナイメージの設計図、Dockerfileを見てみます。
 
