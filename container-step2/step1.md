@@ -11,6 +11,5 @@
 
 `COPY index.html /usr/share/nginx/html`は、カレントディレクトリの`index.html`を、イメージ内の`/usr/share/nginx/html`にコピーしています。
 
-`index.html`のサンプルファイルです。好きなように書き換えていただいて構いません。
-
+`index.html`のサンプルファイルです。事前に確認してみましょう。
 `cat index.html`{{execute}}
