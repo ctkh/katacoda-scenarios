@@ -2,6 +2,8 @@
 
 `docker build -t mynginx .`{{execute}}
 
+※この時の画面出力、覚えておいてください。
+
 イメージを確認してみましょう。
 
 `docker image ls`{{execute}}
