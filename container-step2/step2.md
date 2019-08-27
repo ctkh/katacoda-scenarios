@@ -10,4 +10,4 @@
 
 `docker run  -d  -p 10080:80  --name myweb mynginx`{{execute}}
 
-Step 1 と同様に、ブラウザで見てみてください。あなたのindex.htmlが見えましたでしょうか。
+ブラウザで見てみてください。あなたのindex.htmlが見えましたでしょうか。
