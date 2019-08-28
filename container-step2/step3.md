@@ -12,7 +12,7 @@ index.htmlを差し替える必要が出てきたテイで、編集してみま�
 
 先ほど同じアプリという扱いでイメージ名は同じとし、バージョンをあげます。
 
-`docker build -t mynginx:1.1 -f .`{{execute}}
+`docker build -t mynginx:1.1 .`{{execute}}
 
 イメージを確認してみます。
 
