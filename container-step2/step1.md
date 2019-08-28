@@ -7,7 +7,9 @@
 
 `cat Dockerfile`{{execute}}
 
-`FROM nginx`は、nginxイメージをベースにするという宣言です。
+`FROM nginx:1.17`は、nginxイメージをベースにするという宣言です。`:1.17`の部分はタグと呼ばれますが、バージョンのニュアンスで使われます。
+
+タグを省略した場合、もしくは`:latest`とした場合、その時点の最新版を利用します。商用用途では、基本的にはバージョンを明に指定することになると思います。
 
 `COPY index.html /usr/share/nginx/html`は、カレントディレクトリの`index.html`を、イメージ内の`/usr/share/nginx/html`にコピーしています。
 
