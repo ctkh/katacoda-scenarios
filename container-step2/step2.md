@@ -14,6 +14,6 @@
 
 作ったイメージを利用して、コンテナを起動してみます。
 
-`docker run  -d  -p 10080:80  --name myweb mynginx:1.0`{{execute}}
+`docker run  -d  -p 10080:80  --name myweb1 mynginx:1.0`{{execute}}
 
 ブラウザで見てみてください。あなたのindex.htmlが見えましたでしょうか。
