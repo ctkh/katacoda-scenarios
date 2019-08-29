@@ -16,6 +16,17 @@
 - `node app.js`というコマンドで、app.jsを起動できます。
 - `app.js`は、`12345`ポートをListenし、文言を返却するアプリです。
 
+Dockerfileの作成が終わったら、ビルド＆コンテナ起動をしてみましょう。(イメージ名、コンテナ名は任意です)
+
+`docker build -t mynode:1.0 .`{{execute}}
+
+`docker run  -d  -p 12345:12345 --name nodex mynode:1.0`{{execute}}
+
+ブラウザで、以下の文言が出てくれば成功です。
+
+`Hello from Node.js Container, Let's enjoy studying!`
+
+
 正解のサンプルを置いてますので、困ったらどうぞ。
 
 `cat Dockerfile.sample`{{execute}}

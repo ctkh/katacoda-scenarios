@@ -1,6 +1,6 @@
 {
-  "title": "Container Training Step 2",
-  "description": "コンテナイメージを作ってみましょう①",
+  "title": "コンテナイメージを作ってみよう①",
+  "description": "Dockerfileを利用して、コンテナイメージを作ってみましょう",
   "difficulty": "Beginner",
   "time": "10 minutes",
   "details": {

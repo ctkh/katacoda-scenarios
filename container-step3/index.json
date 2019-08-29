@@ -1,6 +1,6 @@
 {
-  "title": "Dockerfileを作ってみよう②",
-  "description": "Dockerfileに、様々なコマンドを含めてみます",
+  "title": "コンテナイメージを作ってみよう②",
+  "description": "より実践的に、Dockerfileを作ってみましょう",
   "difficulty": "Beginner",
   "time": "10minutes",
   "details": {
