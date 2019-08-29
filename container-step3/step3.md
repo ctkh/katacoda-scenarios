@@ -26,11 +26,9 @@ Dockerfileの作成が終わったら、ビルド＆コンテナ起動をして�
 
 `Hello from Node.js Container, Let's enjoy studying!`
 
-
 正解のサンプルを置いてますので、困ったらどうぞ。
 
 `cat Dockerfile.sample`{{execute}}
-
 
 上手くいきましたでしょうか？
 
