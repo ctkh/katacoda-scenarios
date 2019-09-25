@@ -20,11 +20,11 @@
 
 以下のファイルの、レプリカ数(replicas)を変更してみましょう。
 
-`examples/guestbook/frontend-deployment.yaml`
+`examples/guestbook/frontend-deployment.yaml`{{execute}}
 
 変更したら、適用してみます。
 
-`kubectl apply -f examples/guestbook/frontend-deployment.yaml`
+`kubectl apply -f examples/guestbook/frontend-deployment.yaml`{{execute}}
 
 `kubectl get pod`{{execute}}
 
