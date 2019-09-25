@@ -1,37 +1,33 @@
-まずは、ディレクトリを移動します。
+### ReplicaSetの確認
 
-`cd ../node`{{execute}}
+あたらめて、Podを見てみます。
 
-以下のイメージを作成する、Dockerfileを作成し、イメージをビルドし、コンテナを起動してみましょう！
+`kubectl get pod`{{execute}}
 
-なおDockerfileはvi等で書いてもいいですし、1回touchして作成したあと、上のエディタで書いてもいいです。
+一番最後の文字列は、起動したPodごとに異なるランダムな文字列です。皆さん異なります。
 
-`touch Dockerfile`{{execute}}
+試しに、frontendのPodを1つ落としてしまいましょう。
 
-- `node:10`(Node.js)をベースイメージとします
-- `node`では、任意のディレクトリでアプリを動かせます。関連ファイルは全部どこかにまとめておいてしまいましょう。
-- アプリを起動するのに必要なパッケージが記載してある`package.json`を、カレントディレクトリに置いてます。
-- `package.json`があるディレクトリで、`npm install`というコマンドを打つと、必要なパッケージをダウンロードします。(npm=nodeのパッケージ管理ツール)
--  サンプルアプリ`app.js`も、カレントディレクトリに置いてます。
-- `node app.js`というコマンドで、app.jsを起動できます。
-- `app.js`は、`12345`ポートをListenし、文言を返却するアプリです。
+`kubectl delete pod frontend-XXXXXXXXX-XXX`{{execute}}
 
-Dockerfileの作成が終わったら、ビルド＆コンテナ起動をしてみましょう。(イメージ名、コンテナ名は任意です)
+※後ろの文字列はランダムなので、自分が確認したものに置き換えてください。
 
-`docker build -t mynode:1.0 .`{{execute}}
+`kubectl get pod`{{execute}}
 
-`docker run  -d  -p 12345:12345 --name nodex mynode:1.0`{{execute}}
+もう一度確認するとどうでしょうか。
 
-ブラウザで、以下の文言が出てくれば成功です。
+### レプリカ数の変更
 
-`Hello from Node.js Container, Let's enjoy studying!`
+以下のファイルの、レプリカ数(replicas)を変更してみましょう。
 
-正解のサンプルを置いてますので、困ったらどうぞ。
+`examples/guestbook/frontend-deployment.yaml`
 
-`cat Dockerfile.sample`{{execute}}
+変更したら、適用してみます。
 
-上手くいきましたでしょうか？
+`kubectl apply -f examples/guestbook/frontend-deployment.yaml`
 
-アプリの入った小さなサーバ(＝コンテナ)が、1つのテキストファイル(Dockerfile)で簡単に作れる　というのを体感できたでしょうか。
+`kubectl get pod`{{execute}}
 
-以上で、本シナリオは終了します。
+レプリカ数が変わったでしょうか？
+
+次回は、新しいアプリのバージョンアップなどを体験したいと思います。

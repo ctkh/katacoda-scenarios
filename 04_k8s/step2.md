@@ -11,7 +11,7 @@
 
 `examples/guestbook/frontend-service.yaml`だけ、編集します。
 
-`- port: 80`の下に`NodePort: 10080`を追記してください。
+`- port: 80`の下に`nodePort: 30080`を追記してください。
 
 ### マニュフェストファイルの適用
 
@@ -21,12 +21,20 @@
 
 `-f`は、ファイル(ディレクトリ))を利用
 
+### 起動確認
+
 DeploymentによってReplicaSet経由でreplicas分のPodと、Serviceが立ち上がったはずです。
 
-`kubectl get pods`
+`kubectl get pod`
 
 `kubectl get rs`
 
 `kubectl get svc`
 
 それぞれ、`Pod`、`ReplicaSet`、`Service`を確認するコマンドです。
+
+### 起動確認(ブラウザ)
+
+frontendに接続してみます。先ほどNodePortで指定した、`30080`にブラウザでアクセスしてみます。
+
+GuestBookアプリが使えたら成功です。
