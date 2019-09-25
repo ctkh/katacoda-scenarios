@@ -1,13 +1,32 @@
-イメージをビルドしてみましょう。
+以下のマニュフェストファイルを見てみましょう。
 
-`docker build -t mynginx2:1.0 .`{{execute}}
+`examples/guestbook/frontend-deployment.yaml`
+`examples/guestbook/frontend-service.yaml`
+`examples/guestbook/redis-master-deployment.yaml`
+`examples/guestbook/redis-master-service.yaml`
+`examples/guestbook/redis-slave-deployment.yaml`
+`examples/guestbook/redis-slave-service.yaml`
 
-Dockerfileに書いたコマンドが`Step`として表示されると思います。出力イメージを追ってみてください。
+※内容については、スライドで補足します
 
-成功したら、コンテナを起動してみます。
+`examples/guestbook/frontend-service.yaml`だけ、編集します。
 
-`docker run  -d  -p 20080:80 --name web10 mynginx2:1.0`{{execute}}
+`- port: 80`の下に`NodePort: 10080`を追記してください。
 
-`index.html`が表示されたでしょうか。
+### マニュフェストファイルの適用
 
-次は、自分でDockerfileを作ってみましょう。
+以下のコマンドで、フォルダ配下のマニュフェストファイル(YAML)を適用しましょう。
+
+`kubectl apply -f examples/guestbook/`{{execute}}
+
+`-f`は、ファイル(ディレクトリ))を利用
+
+DeploymentによってReplicaSet経由でreplicas分のPodと、Serviceが立ち上がったはずです。
+
+`kubectl get pods`
+
+`kubectl get rs`
+
+`kubectl get svc`
+
+それぞれ、`Pod`、`ReplicaSet`、`Service`を確認するコマンドです。
