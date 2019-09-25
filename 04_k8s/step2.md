@@ -25,11 +25,11 @@
 
 DeploymentによってReplicaSet経由でreplicas分のPodと、Serviceが立ち上がったはずです。
 
-`kubectl get pod`
+`kubectl get pod`{{execute}}
 
-`kubectl get rs`
+`kubectl get rs`{{execute}}
 
-`kubectl get svc`
+`kubectl get svc`{{execute}}
 
 それぞれ、`Pod`、`ReplicaSet`、`Service`を確認するコマンドです。
 
