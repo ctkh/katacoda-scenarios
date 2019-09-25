@@ -1,20 +1,25 @@
-Dockerfileでは、`FROM`、`COPY`以外でも様々なコマンドが使えます。
+K8sクラスタの準備は、Katacodaに任せました。
 
-代表的なコマンドを利用しながら、より実践的なDockerfileを作ってみようと思います。
+`kubectl cluster-info`{{execute}}
 
-なお、コマンドの詳細は公式ページなども参照してください。
+クラスタの状態を確認するコマンドです。以下のメッセージが出ることを確認してください。
 
-http://docs.docker.jp/engine/reference/builder.html
+※少し時間がかかることがあります
 
-コマンドについては、サンプルのDockerfile内のコメントで説明します。まずは見てみましょう。
+`Kubernetes master is running at ...`
 
-なお以下のようなシチュエーションにいると想定してください。
+K8sクラスタの構成を確認します。
 
-- 公式のnginxイメージはDebianベースであるが、諸事情あってCentOSベースにしたい。
-  そこでCentOSイメージをベースに、自分でnginxのインストールから実行する。
+`kubectl get nodes`{{execute}}
 
-`cd container-lesson/day1/nginx2`{{execute}}
+クラスタを構成するサーバの情報が出力されます。今回は、master　1台で試します。masterが、nodeを兼ねていると思ってください。
 
-`cat Dockerfile`{{execute}}
+※複数サーバ構成を作るのに、それなりに時間がかかってしまうので...
 
-※上のエディタで見ると、日本語が化けます。。catの結果をコピーして、テキストエディタ等にコピーしてご覧ください。
+今回は、K8sが提供してくれているサンプルアプリである、guestbookを利用してみます。
+
+これを使った解説記事やブログはWebに多数載っているので、自己学習にもつながると思います。
+
+サンプルアプリをGithubよりダウンロードします。
+
+`git clone https://github.com/kubernetes/examples.git`{{execute}}
