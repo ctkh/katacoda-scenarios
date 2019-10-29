@@ -1,0 +1,1 @@
+Deployment,ReplicaSet,Pod,Service(前回のおさらい)と、VolumeやConfigMapについて
