@@ -1,6 +1,6 @@
 {
-  "title": "K8sに触れてみよう(Volume/ConfigMap)",
-  "description": "VolumeやConfigMapについて",
+  "title": "K8sに触れてみよう(Blue/Green Deployment)",
+  "description": "Blue/Green Deploymentを体感しよう",
   "difficulty": "Beginner",
   "time": "15minutes",
   "details": {
