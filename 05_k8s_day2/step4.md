@@ -9,8 +9,11 @@ Podは、Deploymentを適用することにより、Deployment→ReplicaSet→Po
 それぞれのリソースを確認してみましょう。
 
 `kubectl get pods`{{execute}}
+
 `kubectl get rs`{{execute}}
+
 `kubectl get deployment`{{execute}}
+
 
 ### Serviceの起動
 
