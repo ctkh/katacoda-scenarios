@@ -4,7 +4,7 @@
 
 `cat node-deployment.yaml`{{execute}}
 
-Deployment,ReplicaSet,Podの定義については、前回もやりました。今回はVolumeやマウントの定義が存在します。
+Deployment,ReplicaSet,Podの定義については、前回もやりました。今回はVolumeやConfigMap、マウントの定義が存在します。
 
 - Service
 

@@ -1,33 +1,20 @@
-### ReplicaSetの確認
+### ConfigMapの作成
 
-あたらめて、Podを見てみます。
+- nginx.conf の作成
 
-`kubectl get pod`{{execute}}
+`kubectl create configmap --save-config cm-nginx-conf --from-file=./nginx.conf `{{execute}}
 
-一番最後の文字列は、起動したPodごとに異なるランダムな文字列です。皆さん異なります。
+カレントディレクトリの`nginx.conf`をもとに、`cm-nginx-conf `という名のConfigMapを作成しています。
 
-試しに、frontendのPodを1つ落としてしまいましょう。
+この時、Key=ファイル名(nginx.conf)、Value=<ファイルの中身>というjsonが作成されます。
 
-`kubectl delete pod frontend-XXXXXXXXX-XXX`{{execute}}
+`kubectl get configmaps cm-nginx-conf -o json | jq`{{execute}}
 
-※後ろの文字列はランダムなので、自分が確認したものに置き換えてください。
+- htmlを持つConfigMap の作成
 
-`kubectl get pod`{{execute}}
+スライドで触れたとおり、ConfigMapの中身がコンフィグかどうかはあまり関係なく、Key＆Value形式で定義したものをファイルとしてPodにマウントできます。  
+これを活用して、htmlもConfigMapに乗せてしまいましょう。
 
-もう一度確認するとどうでしょうか。
+`kubectl create configmap --save-config cm-nginx-html-blue --from-file=./blue.html`{{execute}}
 
-### レプリカ数の変更
-
-以下のファイルの、レプリカ数(replicas)を変更してみましょう。
-
-`examples/guestbook/frontend-deployment.yaml`{{execute}}
-
-変更したら、適用してみます。
-
-`kubectl apply -f examples/guestbook/frontend-deployment.yaml`{{execute}}
-
-`kubectl get pod`{{execute}}
-
-レプリカ数が変わったでしょうか？
-
-次回は、新しいアプリのバージョンアップなどを体験したいと思います。
+`kubectl get configmaps cm-nginx-html-blue -o json | jq`{{execute}}
