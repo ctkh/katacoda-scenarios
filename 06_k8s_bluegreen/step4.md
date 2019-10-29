@@ -1,34 +1,43 @@
 ### Podの起動
 
-PodがマウントするConfigMapの作成が無事に終わりました。それでは、Podを起動していきましょう。
+`green`のPodを起動します。
 
-Podは、Deploymentを適用することにより、Deployment→ReplicaSet→Podと起動しますね。
+`kubectl apply -f node-deployment-green.yaml`{{execute}}
 
-`kubectl apply -f node-deployment.yaml`{{execute}}
-
-それぞれのリソースを確認してみましょう。
+それぞれのリソースを確認してみましょう。(blueもgreenもできているはず)
 
 `kubectl get pods`{{execute}}
+
 `kubectl get rs`{{execute}}
+
 `kubectl get deployment`{{execute}}
 
 ### Serviceの起動
 
-Podを起動しただけでは、K8sクラスタの外部からの接続はできません。Podを束ねて外部に公開する機能、Serviceを起動します。
+Serviceについては、外部に公開するポートはそのまま、振り分け先を`green`に切り替えたいです。
 
-`kubectl apply -f nginx-service.yaml`{{execute}}
+よってService名(`metadata.name`)は据え置き、振り分け条件を変えます。先ほどPodに振った、`color: green`のラベルを条件にしましょう。
+
+`cat nginx-service-green.yaml`{{execute}}
+
+それでは適用...の前に、`blue`の画面を脇に出しながらやってみましょう。
+
+`kubectl apply -f nginx-service-green.yaml`{{execute}}
 
 `kubectl get svc`{{execute}}
 
-上手くいけば、`:30080`で受信したアクセスを、`:80`へ振り分けるServiceができているはずです。
+バツっと切り替わっ...てほしいのですが、たまに`blue`が混じります。しばらくたつと、`green`に寄ります。(感覚的には5分くらい)
 
-Katacodaのブラウザで確認してみましょう。
+調べると同じようなことが書いているものが結構ありました。パラメータの調整等が必要そうですが、今日は深堀できません。
+
+きれいに切り替わったテイで、`blue`を落としてしまいましょう。
+
+`kubectl delete -f node-deployment.yaml`{{execute}}
+
+`kubectl get pods`{{execute}}
 
 ### まとめ
 
-ConfigMapを利用して、設定ファイルやHTMLをコンテナの外に切り出しました。これにより、左記のファイルが変更された際も、コンテナイメージのビルドは不要となります。
+いわゆるBlue/Green Deploymentっぽいものを試してみました。
 
-なお変更時は、新しいConfigMapを作成し、それをマウントするDeploymentを作成し、Podを起動しなおすことになります。
-
-この時の影響を極力抑えるデプロイ方法(Blue-Green Deployment)を、次のシナリオで見てみます。
-
+もちろんK8sでなくてLB機器や複数台のサーバを利用することでも同じようなことは可能ですが、コードや設定ファイルを書く感覚でやれてしまうのが、K8sならではのところでしょうか。(Infrastructure as a code)
